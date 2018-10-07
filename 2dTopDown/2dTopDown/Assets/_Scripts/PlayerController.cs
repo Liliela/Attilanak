@@ -10,6 +10,7 @@ public class PlayerController : Photon.MonoBehaviour
     private Animator _anim;
     private float _currentSpeed;
     private Rigidbody2D _rigid;
+    public float moveVelocityMultiplier = 20f;
 
     private void Awake()
     {
@@ -38,14 +39,14 @@ public class PlayerController : Photon.MonoBehaviour
     private void UpdateAnim()
     {
         _anim.SetFloat("MoveSpeed", _currentSpeed);
-        _anim.SetFloat("X", _direction.x);
-        _anim.SetFloat("Y", _direction.y);
+        _anim.SetInteger("X", (int)_direction.x);
+        _anim.SetInteger("Y", (int)_direction.y);
     }
 
     private void UpdateMove()
     {
         _currentSpeed = _direction.magnitude * _ps.MoveSpeed;
-        _rigid.MovePosition(_rigid.position + _direction * _ps.MoveSpeed * Time.deltaTime);
+        _rigid.velocity = (_direction * _ps.MoveSpeed * Time.deltaTime * moveVelocityMultiplier);
         //  transform.Translate(_direction * _ps.MoveSpeed * Time.deltaTime);
     }
 
