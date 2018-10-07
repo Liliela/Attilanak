@@ -243,8 +243,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114268442738393382}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 3
+  instantiationId: 3
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114268442738393382
@@ -262,9 +262,9 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 1
-    InterpolateOption: 4
+    InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
+    InterpolateLerpSpeed: 14
     InterpolateMoveTowardsAcceleration: 2
     InterpolateMoveTowardsDeceleration: 2
     InterpolateSpeedCurve:
@@ -397,8 +397,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114994480570740406}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 4
+  instantiationId: 4
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114994480570740406
