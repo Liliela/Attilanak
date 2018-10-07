@@ -243,8 +243,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114268442738393382}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 3
+  instantiationId: 3
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114268442738393382
@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93321bc0299b5a04bad09a7f00fb4047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 0
   MoveSpeed: 10
 --- !u!114 &114878099322084060
 MonoBehaviour:
@@ -376,14 +377,15 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 114994480570740406}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 4
+  instantiationId: 4
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114935871022546008

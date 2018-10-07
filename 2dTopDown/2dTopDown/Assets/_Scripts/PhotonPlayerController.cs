@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class PhotonPlayerController : MonoBehaviour {
 
-	
+    private void Awake()
+    {
+        PhotonNetworkManager.Instance.AddPlayer(this);
+    }
+    private void OnDestroy()
+    {
+        PhotonNetworkManager.Instance.RemovePlayer(this);
+    }
 }

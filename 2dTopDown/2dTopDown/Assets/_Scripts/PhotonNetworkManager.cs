@@ -53,8 +53,8 @@ public class PhotonNetworkManager : Photon.PunBehaviour
     public override void OnPhotonPlayerConnected(PhotonPlayer other)
     {
         Debug.Log("OnPhotonPlayerConnected() " + other.NickName);
-
     }
+
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.automaticallySyncScene = false;
@@ -74,8 +74,8 @@ public class PhotonNetworkManager : Photon.PunBehaviour
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("OnJoinedGame");
-        Instantiate(PlayerPrefab, SpawnPoints[PhotonNetwork.player.ID].transform.position, SpawnPoints[PhotonNetwork.player.ID].transform.rotation);
+        Debug.Log("OnJoinedGame" + PhotonNetwork.player.ID);
+        PhotonNetwork.Instantiate(PlayerPrefab.name, SpawnPoints[0].transform.position, SpawnPoints[0].transform.rotation, 0);
     }
 
     #region Public Methods
