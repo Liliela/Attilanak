@@ -15,6 +15,7 @@ public class PlayerController : Photon.MonoBehaviour
     public float moveVelocityMultiplier = 20f;
     private float _mouseAngle;
     private Camera _cam;
+    public Transform Stick;
 
     private void Awake()
     {
@@ -39,7 +40,16 @@ public class PlayerController : Photon.MonoBehaviour
         {
             UpdateMove();
             UpdateAnim();
+            UpdateStick();
         }
+    }
+
+    private void UpdateStick()
+    {
+        Vector3 vectorToTarget = Crosshair.position - Stick.transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        Stick.transform.rotation = Quaternion.Slerp(Stick.transform.rotation, q, Time.deltaTime * 10);
     }
 
     private void UpdateMouse()
@@ -47,18 +57,57 @@ public class PlayerController : Photon.MonoBehaviour
         Vector3 crosshairPos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
         Crosshair.transform.position = new Vector2(crosshairPos.x, crosshairPos.y);
-        _mouseAngle = Vector2.Angle(transform.up, Crosshair.transform.position);
-        if (crosshairPos.x < transform.position.x)
-        {
-            _mouseAngle = -_mouseAngle;
-        }
+        _mouseAngle = AngleBetweenVector2(transform.position, Crosshair.transform.position);
+    }
+
+    private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
+    {
+        Vector2 diference = vec2 - vec1;
+        float sign = (vec2.y < vec1.y) ? -1.0f : 1.0f;
+        return Vector2.Angle(Vector2.right, diference) * sign;
     }
 
     private void UpdateAnim()
     {
         _anim.SetFloat("MoveSpeed", _currentSpeed);
-        _anim.SetInteger("X", (int)_direction.x);
-        _anim.SetInteger("Y", (int)_direction.y);
+        //_anim.SetFloat("MoveSpeed", 10);
+        _anim.SetFloat("AnimSpeed", 1);
+        if (_mouseAngle < 45 && _mouseAngle > -45)
+        {
+            _anim.SetInteger("X", 1);
+            _anim.SetInteger("Y", 0);
+            if (_direction.x < 0)
+            {
+                _anim.SetFloat("AnimSpeed", -1);
+            }
+        }
+        else if (_mouseAngle > 45 && _mouseAngle < 135)
+        {
+            _anim.SetInteger("X", 0);
+            _anim.SetInteger("Y", 1);
+            if (_direction.y < 0)
+            {
+                _anim.SetFloat("AnimSpeed", -1);
+            }
+        }
+        else if (_mouseAngle > 135 || _mouseAngle < -135)
+        {
+            _anim.SetInteger("X", -1);
+            _anim.SetInteger("Y", 0);
+            if (_direction.x > 0)
+            {
+                _anim.SetFloat("AnimSpeed", -1);
+            }
+        }
+        else if (_mouseAngle > -135 && _mouseAngle < -45)
+        {
+            _anim.SetInteger("X", 0);
+            _anim.SetInteger("Y", -1);
+            if (_direction.y > 0)
+            {
+                _anim.SetFloat("AnimSpeed", -1);
+            }
+        }
     }
 
     private void UpdateMove()
