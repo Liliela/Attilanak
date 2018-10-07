@@ -76,7 +76,7 @@ public class PhotonNetworkManager : Photon.PunBehaviour
     {
         Debug.Log("OnJoinedGame" + PhotonNetwork.player.ID);
         PhotonNetwork.Instantiate(PlayerPrefab.name, SpawnPoints[0].transform.position, SpawnPoints[0].transform.rotation, 0);
-        SceneManager.LoadSceneAsync(, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(mapName, LoadSceneMode.Additive);
     }
 
     #region Public Methods
