@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114587758372665010}
   - component: {fileID: 114626973253288386}
   - component: {fileID: 50868337818935842}
-  - component: {fileID: 58077653041235404}
+  - component: {fileID: 61824419283605840}
   m_Layer: 0
   m_Name: PlayerGoblin
   m_TagString: Untagged
@@ -171,8 +171,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58077653041235404
-CircleCollider2D:
+--- !u!61 &61824419283605840
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -183,9 +183,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.44117522}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Size: {x: 0.429592, y: 0.117649555}
+  m_EdgeRadius: 0
 --- !u!81 &81328114474461808
 AudioListener:
   m_ObjectHideFlags: 1
@@ -462,4 +472,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
