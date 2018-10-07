@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class PlayerController : Photon.MonoBehaviour
 {
+    public Transform Crosshair;
+    public float MouseSpeed = 2f;
     private Vector2 _direction;
     private PlayerStat _ps;
     private Animator _anim;
     private float _currentSpeed;
     private Rigidbody2D _rigid;
     public float moveVelocityMultiplier = 20f;
+    private float _mouseAngle;
+    private Camera _cam;
 
     private void Awake()
     {
         _ps = GetComponent<PlayerStat>();
+        _cam = GetComponentInChildren<Camera>();
         _rigid = GetComponent<Rigidbody2D>();
         _anim = GetComponentInChildren<Animator>();
     }
@@ -24,6 +29,7 @@ public class PlayerController : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             UpdateControll();
+            UpdateMouse();
         }
     }
 
@@ -33,6 +39,18 @@ public class PlayerController : Photon.MonoBehaviour
         {
             UpdateMove();
             UpdateAnim();
+        }
+    }
+
+    private void UpdateMouse()
+    {
+        Vector3 crosshairPos = _cam.ScreenToWorldPoint(Input.mousePosition);
+
+        Crosshair.transform.position = new Vector2(crosshairPos.x, crosshairPos.y);
+        _mouseAngle = Vector2.Angle(transform.up, Crosshair.transform.position);
+        if (crosshairPos.x < transform.position.x)
+        {
+            _mouseAngle = -_mouseAngle;
         }
     }
 
