@@ -318,15 +318,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114052098330125032, guid: d7e05e335de928043b3460d7dfe65354,
+    - target: {fileID: 114905248379136294, guid: d7e05e335de928043b3460d7dfe65354,
         type: 2}
       propertyPath: viewIdField
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114052098330125032, guid: d7e05e335de928043b3460d7dfe65354,
+    - target: {fileID: 114905248379136294, guid: d7e05e335de928043b3460d7dfe65354,
         type: 2}
       propertyPath: instantiationId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114052098330125032, guid: d7e05e335de928043b3460d7dfe65354,
+        type: 2}
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114052098330125032, guid: d7e05e335de928043b3460d7dfe65354,
+        type: 2}
+      propertyPath: instantiationId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416732672806532, guid: d7e05e335de928043b3460d7dfe65354, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7e05e335de928043b3460d7dfe65354, type: 2}
@@ -336,62 +350,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4437656663513076, guid: d7e05e335de928043b3460d7dfe65354,
     type: 2}
   m_PrefabInternal: {fileID: 1247733350}
---- !u!1 &1247733352 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1423481209815374, guid: d7e05e335de928043b3460d7dfe65354,
-    type: 2}
-  m_PrefabInternal: {fileID: 1247733350}
---- !u!114 &1247733353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1247733352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 1
-    SynchronizeType: 1
-    Name: MoveSpeed
-  - Type: 1
-    SynchronizeType: 1
-    Name: X
-  - Type: 1
-    SynchronizeType: 1
-    Name: Y
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
---- !u!114 &1247733354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1247733352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents: []
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!1 &1267697514
 GameObject:
   m_ObjectHideFlags: 0
