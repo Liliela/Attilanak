@@ -9,10 +9,12 @@ public class PlayerController : Photon.MonoBehaviour
     private PlayerStat _ps;
     private Animator _anim;
     private float _currentSpeed;
+    private Rigidbody2D _rigid;
 
     private void Awake()
     {
         _ps = GetComponent<PlayerStat>();
+        _rigid = GetComponent<Rigidbody2D>();
         _anim = GetComponentInChildren<Animator>();
     }
 
@@ -21,6 +23,13 @@ public class PlayerController : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             UpdateControll();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (photonView.isMine)
+        {
             UpdateMove();
             UpdateAnim();
         }
@@ -36,7 +45,8 @@ public class PlayerController : Photon.MonoBehaviour
     private void UpdateMove()
     {
         _currentSpeed = _direction.magnitude * _ps.MoveSpeed;
-        transform.Translate(_direction * _ps.MoveSpeed * Time.deltaTime);
+        _rigid.MovePosition(_rigid.position + _direction * _ps.MoveSpeed * Time.deltaTime);
+        //  transform.Translate(_direction * _ps.MoveSpeed * Time.deltaTime);
     }
 
     private void UpdateControll()
