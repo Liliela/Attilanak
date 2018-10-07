@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 114268442738393382}
   - component: {fileID: 114587758372665010}
   - component: {fileID: 114626973253288386}
-  - component: {fileID: 61702426658578604}
   - component: {fileID: 50868337818935842}
+  - component: {fileID: 58077653041235404}
   m_Layer: 0
   m_Name: PlayerGoblin
   m_TagString: Untagged
@@ -171,8 +171,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61702426658578604
-BoxCollider2D:
+--- !u!58 &58077653041235404
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -184,18 +184,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.45
 --- !u!81 &81328114474461808
 AudioListener:
   m_ObjectHideFlags: 1
@@ -243,8 +233,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114268442738393382}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 3
-  instantiationId: 3
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114268442738393382
@@ -397,8 +387,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114994480570740406}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 4
-  instantiationId: 4
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114994480570740406
