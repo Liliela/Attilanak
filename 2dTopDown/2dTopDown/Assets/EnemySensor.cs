@@ -30,11 +30,79 @@ public class EnemySensor : MonoBehaviour
             SensedPlayers.Remove(player);
         }
     }
+
+    public Transform GetTarget(TargetingType targetingType)
+    {
+        Transform Target = null;
+        switch (targetingType)
+        {
+            case TargetingType.FirstSee:
+                Target = SensedPlayers[0].transform;
+                break;
+            case TargetingType.Closest:
+                float dist = float.PositiveInfinity;
+                foreach (var sensed in SensedPlayers)
+                {
+                    float actDis = Vector2.Distance(sensed.transform.position, transform.position);
+                    if (actDis < dist)
+                    {
+                        dist = actDis;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            case TargetingType.LowestHp:
+                float hp = float.PositiveInfinity;
+
+                foreach (var sensed in SensedPlayers)
+                {
+                    float actHp = sensed.GetComponent<GeneralStatistics>().HealthActual;
+                    if (actHp < hp)
+                    {
+                        hp = actHp;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            case TargetingType.HighestHp:
+                float hph = 0;
+
+                foreach (var sensed in SensedPlayers)
+                {
+                    float actHp = sensed.GetComponent<GeneralStatistics>().HealthActual;
+                    if (actHp > hph)
+                    {
+                        hp = actHp;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            case TargetingType.Slowest:
+                float ms = float.PositiveInfinity;
+
+                foreach (var sensed in SensedPlayers)
+                {
+                    float actms = sensed.GetComponent<GeneralStatistics>().MoveSpeed;
+                    if (actms < ms)
+                    {
+                        hp = actms;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        return Target;
+    }
 }
 
-//[Serializable]
-//public class SenseData
-//{
-//    PhotonPlayerController Player;
-//    public bool Sensed;
-//}
+public enum TargetingType
+{
+    FirstSee,
+    Closest,
+    LowestHp,
+    HighestHp,
+    Slowest,
+    //AgroMeter,
+}

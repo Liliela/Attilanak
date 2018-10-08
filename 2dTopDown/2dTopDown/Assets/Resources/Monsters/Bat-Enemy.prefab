@@ -546,7 +546,7 @@ MonoBehaviour:
   moveVelocityMultiplier: 30
   FollowTransform: {fileID: 0}
   StopDistance: 1.5
-  TargetingType: 0
+  TargetingType: 2
 --- !u!114 &114560206092853820
 MonoBehaviour:
   m_ObjectHideFlags: 1
