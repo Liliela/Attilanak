@@ -137,5 +137,6 @@ public class PlayerController : Photon.MonoBehaviour
         {
             _direction += Vector2.up;
         }
+        _direction = _direction.normalized;
     }
 }
