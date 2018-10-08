@@ -2999,16 +2999,25 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: MoveSpeed
   - Type: 3
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: X
   - Type: 3
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Y
   - Type: 1
     SynchronizeType: 1
     Name: AnimSpeed
+  - Type: 9
+    SynchronizeType: 1
+    Name: Attack
+  - Type: 9
+    SynchronizeType: 1
+    Name: Hurt
+  - Type: 4
+    SynchronizeType: 1
+    Name: Dead
   m_SynchronizeLayers:
-  - SynchronizeType: 1
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &114899235870916688
 MonoBehaviour:
