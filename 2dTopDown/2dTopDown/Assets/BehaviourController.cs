@@ -7,12 +7,15 @@ public class BehaviourController : MonoBehaviour
 {
     public List<AIBehaviour> CalmBehaviours;
     private List<AIBehaviour> _usedCalmBehaviours = new List<AIBehaviour>();
+    public bool ShuffleCalm;
 
     public List<AIBehaviour> SenseBehaviours;
     private List<AIBehaviour> _usedSenseBehaviours = new List<AIBehaviour>();
+    public bool ShuffleSense;
 
     public List<AIBehaviour> AggressiveBehaviours;
     private List<AIBehaviour> _usedAggressiveBehaviours = new List<AIBehaviour>();
+    public bool AggressiveCalm;
 
     public AIState AIState;
 
@@ -28,21 +31,27 @@ public class BehaviourController : MonoBehaviour
             SenseBehaviours.Shuffle(_rnd);
             AggressiveBehaviours.Shuffle(_rnd);
         }
-        else
-        {
-            foreach (var item in CalmBehaviours)
-            {
-                Destroy(item);
-            }
-            foreach (var item in SenseBehaviours)
-            {
-                Destroy(item);
-            }
-            foreach (var item in AggressiveBehaviours)
-            {
-                Destroy(item);
-            }
-        }
+   
+        //else
+        //{
+        //    foreach (var item in CalmBehaviours)
+        //    {
+        //        Destroy(item);
+        //    }
+        //    foreach (var item in SenseBehaviours)
+        //    {
+        //        Destroy(item);
+        //    }
+        //    foreach (var item in AggressiveBehaviours)
+        //    {
+        //        Destroy(item);
+        //    }
+        //}
+    }
+
+    private void Start()
+    {
+        ChangeState(AIState.Calm);
     }
 
     public void ChangeState(AIState newstate)
@@ -113,7 +122,8 @@ public class BehaviourController : MonoBehaviour
 
 public enum AIState
 {
-    Calm = 0,
-    Sense = 10,
-    Agessive = 20,
+    None = 0,
+    Calm = 10,
+    Sense = 20,
+    Agessive = 30,
 }

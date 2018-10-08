@@ -149,6 +149,8 @@ GameObject:
   - component: {fileID: 114088913643494476}
   - component: {fileID: 114465745064883034}
   - component: {fileID: 114615648025393428}
+  - component: {fileID: 114883861164335102}
+  - component: {fileID: 114725243019306590}
   - component: {fileID: 114298145289488990}
   m_Layer: 0
   m_Name: Bat-Enemy
@@ -323,7 +325,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 6
 --- !u!58 &58843392251365300
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -336,9 +338,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 0.63885784}
   serializedVersion: 2
-  m_Radius: 0.66
+  m_Radius: 0.35560834
 --- !u!58 &58846186867369576
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -353,7 +355,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 3
 --- !u!58 &58874655951213418
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -368,7 +370,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 9
 --- !u!58 &58955425113832352
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -393,7 +395,7 @@ Animator:
   m_GameObject: {fileID: 1254743162721980}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c047e6af7b7534e42982ec791b82be05, type: 2}
+  m_Controller: {fileID: 9100000, guid: 06c656bf24b0f4546b0469f850457f9d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -438,11 +440,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CalmBehaviours:
-  - {fileID: 114298145289488990}
+  - {fileID: 114725243019306590}
+  ShuffleCalm: 1
   SenseBehaviours:
   - {fileID: 114615648025393428}
+  ShuffleSense: 1
   AggressiveBehaviours:
   - {fileID: 114465745064883034}
+  AggressiveCalm: 1
   AIState: 0
 --- !u!114 &114093005637494946
 MonoBehaviour:
@@ -471,6 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44724a9cfa7f51d4d8247542cd8ffef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConnectedBehaviors: []
 --- !u!114 &114299336016931114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -535,7 +541,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d32de4d1ad9f44db6574da931fe0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConnectedBehaviors:
+  - {fileID: 114883861164335102}
   moveVelocityMultiplier: 20
+  FollowTransform: {fileID: 0}
+  StopDistance: 1.5
 --- !u!114 &114560206092853820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338e9c336af3be44488893392b2c25b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConnectedBehaviors: []
 --- !u!114 &114645609614670570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -599,6 +610,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822ec8ede4863834f9a7c80c994260de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114725243019306590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333234133277208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fccf7a55a4f9ed46aeda056651a4a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectedBehaviors:
+  - {fileID: 114298145289488990}
+  wanderRadius: 5
+  minwanderTimer: 1
+  maxwanderTimer: 4
+  OriginTransform: {fileID: 0}
+  mindistance: 0.3
+  moveVelocityMultiplier: 20
 --- !u!114 &114730298918449722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,7 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88486a1463c5cf042b986b26587ac098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  _moveSpeed: 10
+  _healthMax: 50
+  _healthActual: 50
+  HpBar: {fileID: 114560206092853820}
+  Dead: 0
 --- !u!114 &114825862747429862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -772,10 +806,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 0
+    Name: MoveSpeed
+  - Type: 1
+    SynchronizeType: 0
+    Name: X
+  - Type: 1
+    SynchronizeType: 0
+    Name: Y
+  - Type: 9
+    SynchronizeType: 0
+    Name: Attack
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &114883861164335102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333234133277208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae8248d5cfab9b4485a39f8f349843a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectedBehaviors: []
+  Damage: 10
+  Cooldown: 3
+  OptimalRange: 2
+  AttackRadius: 1
+  AttackPos: {fileID: 4380255249701036}
+  AttackAnimName: Attack
+  HitLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!212 &212137899023328906
 SpriteRenderer:
   m_ObjectHideFlags: 1

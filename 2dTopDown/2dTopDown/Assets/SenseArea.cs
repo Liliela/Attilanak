@@ -7,8 +7,9 @@ public class SenseArea : AIBehaviour
     private BehaviourController _bh;
     private EnemySensor _sensor;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         _bh = GetComponent<BehaviourController>();
         _sensor = GetComponentInChildren<EnemySensor>();
     }

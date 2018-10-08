@@ -27,7 +27,7 @@ public class PlayerController : Photon.MonoBehaviour
 
     private void Update()
     {
-        if (photonView.isMine)
+        if (photonView.isMine && !_ps.Dead)
         {
             UpdateControll();
             UpdateMouse();
@@ -38,7 +38,7 @@ public class PlayerController : Photon.MonoBehaviour
     {
         if (photonView.isMine)
         {
-            UpdateMove();      
+            UpdateMove();
             UpdateStick();
             UpdateAnim();
         }
@@ -74,8 +74,8 @@ public class PlayerController : Photon.MonoBehaviour
         _anim.SetFloat("AnimSpeed", 1);
         if (_mouseAngle < 45 && _mouseAngle > -45)
         {
-            _anim.SetInteger("X", 1);
-            _anim.SetInteger("Y", 0);
+            _anim.SetFloat("X", 1);
+            _anim.SetFloat("Y", 0);
             if (_direction.x < 0)
             {
                 _anim.SetFloat("AnimSpeed", -1);
@@ -83,8 +83,8 @@ public class PlayerController : Photon.MonoBehaviour
         }
         else if (_mouseAngle > 45 && _mouseAngle < 135)
         {
-            _anim.SetInteger("X", 0);
-            _anim.SetInteger("Y", 1);
+            _anim.SetFloat("X", 0);
+            _anim.SetFloat("Y", 1);
             if (_direction.y < 0)
             {
                 _anim.SetFloat("AnimSpeed", -1);
@@ -92,8 +92,8 @@ public class PlayerController : Photon.MonoBehaviour
         }
         else if (_mouseAngle > 135 || _mouseAngle < -135)
         {
-            _anim.SetInteger("X", -1);
-            _anim.SetInteger("Y", 0);
+            _anim.SetFloat("X", -1);
+            _anim.SetFloat("Y", 0);
             if (_direction.x > 0)
             {
                 _anim.SetFloat("AnimSpeed", -1);
@@ -101,8 +101,8 @@ public class PlayerController : Photon.MonoBehaviour
         }
         else if (_mouseAngle > -135 && _mouseAngle < -45)
         {
-            _anim.SetInteger("X", 0);
-            _anim.SetInteger("Y", -1);
+            _anim.SetFloat("X", 0);
+            _anim.SetFloat("Y", -1);
             if (_direction.y > 0)
             {
                 _anim.SetFloat("AnimSpeed", -1);

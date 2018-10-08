@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class StartAgressive : AIBehaviour
 {
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     public override void EnterBehaviour()
     {
         base.EnterBehaviour();
