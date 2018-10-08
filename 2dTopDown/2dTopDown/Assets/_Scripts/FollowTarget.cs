@@ -74,23 +74,23 @@ public class FollowTarget : AIBehaviour
 
         if (_enemyAngle < 45 && _enemyAngle > -45)
         {
-            _anim.SetFloat("X", 1);
-            _anim.SetFloat("Y", 0);
+            _anim.SetFloat("inputX", 1);
+            _anim.SetFloat("inputY", 0);
         }
         else if (_enemyAngle > 45 && _enemyAngle < 135)
         {
-            _anim.SetFloat("X", 0);
-            _anim.SetFloat("Y", 1);
+            _anim.SetFloat("inputX", 0);
+            _anim.SetFloat("inputY", 1);
         }
         else if (_enemyAngle > 135 || _enemyAngle < -135)
         {
-            _anim.SetFloat("X", -1);
-            _anim.SetFloat("Y", 0);
+            _anim.SetFloat("inputX", -1);
+            _anim.SetFloat("inputY", 0);
         }
         else if (_enemyAngle > -135 && _enemyAngle < -45)
         {
-            _anim.SetFloat("X", 0);
-            _anim.SetFloat("Y", -1);
+            _anim.SetFloat("inputX", 0);
+            _anim.SetFloat("inputY", -1);
         }
     }
 

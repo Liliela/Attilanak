@@ -83,7 +83,12 @@ public class GeneralStatistics : Photon.MonoBehaviour
     {
         _anim.SetBool("Dead", true);
         Dead = true;
+        List<EnemySensor> removeSense = new List<EnemySensor>();
         foreach (var sense in _monsterSenses)
+        {
+            removeSense.Add(sense);
+        }
+        foreach (var sense in removeSense)
         {
             sense.RemovePlayer(GetComponent<PhotonPlayerController>());
         }
