@@ -74,38 +74,38 @@ public class PlayerController : Photon.MonoBehaviour
         _anim.SetFloat("AnimSpeed", 1);
         if (_mouseAngle < 45 && _mouseAngle > -45)
         {
-            _anim.SetFloat("X", 1);
-            _anim.SetFloat("Y", 0);
+            _anim.SetFloat("inputX", 1f);
+            _anim.SetFloat("inputY", 0f);
             if (_direction.x < 0)
             {
-                _anim.SetFloat("AnimSpeed", -1);
+                _anim.SetFloat("AnimSpeed", -1f);
             }
         }
         else if (_mouseAngle > 45 && _mouseAngle < 135)
         {
-            _anim.SetFloat("X", 0);
-            _anim.SetFloat("Y", 1);
+            _anim.SetFloat("inputX", 0f);
+            _anim.SetFloat("inputY", 1f);
             if (_direction.y < 0)
             {
-                _anim.SetFloat("AnimSpeed", -1);
+                _anim.SetFloat("AnimSpeed", -1f);
             }
         }
         else if (_mouseAngle > 135 || _mouseAngle < -135)
         {
-            _anim.SetFloat("X", -1);
-            _anim.SetFloat("Y", 0);
-            if (_direction.x > 0)
+            _anim.SetFloat("inputX", -1f);
+            _anim.SetFloat("inputY", 0f);
+            if (_direction.x > 0f)
             {
-                _anim.SetFloat("AnimSpeed", -1);
+                _anim.SetFloat("AnimSpeed", -1f);
             }
         }
         else if (_mouseAngle > -135 && _mouseAngle < -45)
         {
-            _anim.SetFloat("X", 0);
-            _anim.SetFloat("Y", -1);
-            if (_direction.y > 0)
+            _anim.SetFloat("inputX", 0f);
+            _anim.SetFloat("inputY", -1f);
+            if (_direction.y > 0f)
             {
-                _anim.SetFloat("AnimSpeed", -1);
+                _anim.SetFloat("AnimSpeed", -1f);
             }
         }
     }
