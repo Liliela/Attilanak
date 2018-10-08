@@ -437,7 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dfe1460f27812478ab1b16b61f3e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CalmBehaviours: []
+  CalmBehaviours:
+  - {fileID: 114298145289488990}
   SenseBehaviours:
   - {fileID: 114615648025393428}
   AggressiveBehaviours:
