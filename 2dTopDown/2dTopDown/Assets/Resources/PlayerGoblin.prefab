@@ -2998,12 +2998,6 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 1
     Name: MoveSpeed
-  - Type: 3
-    SynchronizeType: 2
-    Name: X
-  - Type: 3
-    SynchronizeType: 2
-    Name: Y
   - Type: 1
     SynchronizeType: 1
     Name: AnimSpeed
@@ -3016,6 +3010,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Dead
+  - Type: 1
+    SynchronizeType: 2
+    Name: inputX
+  - Type: 1
+    SynchronizeType: 2
+    Name: inputY
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
