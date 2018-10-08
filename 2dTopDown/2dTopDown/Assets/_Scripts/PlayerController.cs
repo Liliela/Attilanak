@@ -38,9 +38,9 @@ public class PlayerController : Photon.MonoBehaviour
     {
         if (photonView.isMine)
         {
-            UpdateMove();
-            UpdateAnim();
+            UpdateMove();      
             UpdateStick();
+            UpdateAnim();
         }
     }
 
