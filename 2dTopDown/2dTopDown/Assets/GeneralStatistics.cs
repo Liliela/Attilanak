@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GeneralStatistics : MonoBehaviour
+public class GeneralStatistics : Photon.MonoBehaviour
 {
     public float MoveSpeed
     {
@@ -66,9 +66,16 @@ public class GeneralStatistics : MonoBehaviour
 
     public virtual void Revive(float percent)
     {
-        _anim.SetBool("Dead",false);
+        _anim.SetBool("Dead", false);
         Dead = false;
         ChangeHealth(HealthMax * percent);
+    }
+
+
+    [PunRPC]
+    public void RPC_ChangeHealt(float change)
+    {
+        ChangeHealth(change);
     }
 
     public virtual void ChangeHealth(float change)

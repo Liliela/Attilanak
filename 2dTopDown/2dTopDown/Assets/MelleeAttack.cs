@@ -34,7 +34,7 @@ public class MelleeAttack : AIBehaviour
             {
                 foreach (var item in playerToHit)
                 {
-                    item.GetComponentInParent<PlayerStat>().ChangeHealth(-Damage);
+                    item.GetComponentInParent<PlayerStat>().photonView.RPC("RPC_ChangeHealt", PhotonTargets.AllBuffered, -Damage);
                 }
                 _onCooldown = true;
                 _anim.SetTrigger(AttackAnimName);
