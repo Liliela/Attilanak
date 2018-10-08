@@ -10,7 +10,7 @@ public class SenseArea : AIBehaviour
     private void Awake()
     {
         _bh = GetComponent<BehaviourController>();
-        _sensor = GetComponent<EnemySensor>();
+        _sensor = GetComponentInParent<EnemySensor>();
     }
 
     private void Update()
