@@ -7,23 +7,25 @@ using UnityEngine.UI;
 
 public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    public Rune Rune;
+    public RuneDescriptor Rune;
     public Image Image;
 
-    private Transform _avalibleListParent;
+    private Transform _startParent;
 
+    private RuneSlot _newRuneSlot;
     private RuneSlot _runeslot;
 
-    public void Init(Rune rune)
+    public void Init(RuneDescriptor rune)
     {
-        _avalibleListParent = transform.parent;
+        _startParent = transform.parent;
         Rune = rune;
         Image.sprite = Rune.Image;
-    }
+    }   
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        transform.SetParent(_avalibleListParent.parent.parent);
+        Debug.Log("OnBeginDrag");
+        transform.SetParent(_startParent.parent.parent);
         Image.raycastTarget = false;
     }
 
@@ -35,7 +37,7 @@ public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             RuneSlot rSlot = eventData.pointerEnter.gameObject.GetComponent<RuneSlot>();
             if (rSlot && !rSlot.Locked)
             {
-                _runeslot = rSlot;
+                _newRuneSlot = rSlot;
             }
         }
         else if (eventData.pointerEnter && eventData.pointerEnter.name == "RuneImage")
@@ -47,33 +49,43 @@ public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
             if (rSlot && !rSlot.Locked)
             {
-                _runeslot = rSlot;
+                _newRuneSlot = rSlot;
             }
         }
         else
         {
-            _runeslot = null;
+            _newRuneSlot = null;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log("OnEndDrag");
         Image.raycastTarget = true;
-        if (_runeslot == null)
+        if (_newRuneSlot)
         {
-            transform.SetParent(_avalibleListParent);
+            if (_runeslot)
+                _runeslot.RemoveFromSlot();
+            transform.SetParent(_newRuneSlot.transform);
+            _newRuneSlot.AddToSlot(this);
+            _runeslot = _newRuneSlot;
+            _newRuneSlot = null;
         }
         else
         {
-            _runeslot.AddToSlot(this);
-            transform.SetParent(_runeslot.transform);
+            if (_runeslot)
+                _runeslot.RemoveFromSlot();
+            _runeslot = null;
+            transform.SetParent(_startParent);
         }
     }
 
     public void RemoveFromSlot()
     {
-        transform.SetParent(_avalibleListParent);
+        if (_runeslot)
+            _runeslot.RemoveFromSlot();
         _runeslot = null;
+        transform.SetParent(_startParent);
     }
 
     private RuneSlot GetRuneSlot()

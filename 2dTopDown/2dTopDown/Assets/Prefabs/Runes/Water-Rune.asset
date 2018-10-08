@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Water-Rune
   m_EditorClassIdentifier: 
   Image: {fileID: 21300080, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
-  RuneType: 10
+  RuneType: 30
   Unlocked: 1

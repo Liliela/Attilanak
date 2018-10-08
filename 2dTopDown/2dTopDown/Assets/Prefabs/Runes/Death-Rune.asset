@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Death-Rune
   m_EditorClassIdentifier: 
   Image: {fileID: 21300090, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
-  RuneType: 10
+  RuneType: 50
   Unlocked: 1

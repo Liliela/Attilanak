@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RuneSlot : MonoBehaviour
+public class RuneSlot : MonoBehaviour, IPointerClickHandler
 {
     public RuneElement RuneElement;
     public Image Image;
@@ -14,7 +15,7 @@ public class RuneSlot : MonoBehaviour
     public bool Locked = false;
     private MagicMaker _magicMaker;
 
-    internal void Init(MagicMaker magicMaker)
+    public void Init(MagicMaker magicMaker)
     {
         _magicMaker = magicMaker;
         SetLocked(Locked);
@@ -33,6 +34,12 @@ public class RuneSlot : MonoBehaviour
         }
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (RuneElement)
+            RuneElement.RemoveFromSlot();
+    }
+
     public void AddToSlot(RuneElement rune)
     {
         if (RuneElement != null)
@@ -40,6 +47,12 @@ public class RuneSlot : MonoBehaviour
             RuneElement.RemoveFromSlot();
         }
         RuneElement = rune;
+        _magicMaker.UpdateRunes();
+    }
+
+    public void RemoveFromSlot()
+    {
+        RuneElement = null;
         _magicMaker.UpdateRunes();
     }
 }
