@@ -12,10 +12,12 @@ public class FollowTarget : AIBehaviour
     private Vector2 _direction;
     private EnemySensor _sensor;
     private Transform _followTransform;
+    private BehaviourController _bh;
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        _bh = GetComponent<BehaviourController>();
         _sensor = GetComponentInChildren<EnemySensor>();
         _stat = GetComponent<GeneralStatistics>();
     }
@@ -25,6 +27,15 @@ public class FollowTarget : AIBehaviour
         if (PhotonNetwork.isMasterClient && _followTransform)
         {
             _direction = (_followTransform.position - transform.position).normalized;
+          
+            if (_sensor.SensedPlayers.Count == 0)
+            {
+                _bh.ChangeState(AIState.Calm);
+            }
+            else
+            {
+                _followTransform = _sensor.SensedPlayers[0].transform;
+            }
         }
     }
 

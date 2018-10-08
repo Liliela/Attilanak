@@ -19,22 +19,14 @@ public class EnemySensor : MonoBehaviour
         {
             SensedPlayers.Add(player);
         }
-        if (SensedPlayers.Count > 0)
-        {
-            _bh.ChangeState(AIState.Sense);
-        }
     }
 
     public void RemovePlayer(PhotonPlayerController player)
     {
         if (SensedPlayers.Contains(player))
         {
-            SensedPlayers.Remove(player);
-        }
-        if (SensedPlayers.Count == 0)
-        {
-            _bh.ChangeState(AIState.Calm);
-        }
+            SensedPlayers.Remove(player);          
+        }         
     }
 }
 

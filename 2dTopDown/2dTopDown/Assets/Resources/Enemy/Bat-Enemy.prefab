@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 114088913643494476}
   - component: {fileID: 114465745064883034}
   - component: {fileID: 114615648025393428}
+  - component: {fileID: 114298145289488990}
   m_Layer: 0
   m_Name: Bat-Enemy
   m_TagString: Untagged
@@ -458,6 +459,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114298145289488990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333234133277208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44724a9cfa7f51d4d8247542cd8ffef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114299336016931114
 MonoBehaviour:
   m_ObjectHideFlags: 1

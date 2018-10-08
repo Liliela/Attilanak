@@ -21,10 +21,28 @@ public class BehaviourController : MonoBehaviour
 
     private void Awake()
     {
-        _rnd = new System.Random();
-        CalmBehaviours.Shuffle(_rnd);
-        SenseBehaviours.Shuffle(_rnd);
-        AggressiveBehaviours.Shuffle(_rnd);
+        if (!PhotonNetwork.isMasterClient)
+        {
+            _rnd = new System.Random();
+            CalmBehaviours.Shuffle(_rnd);
+            SenseBehaviours.Shuffle(_rnd);
+            AggressiveBehaviours.Shuffle(_rnd);
+        }
+        else
+        {
+            foreach (var item in CalmBehaviours)
+            {
+                Destroy(item);
+            }
+            foreach (var item in SenseBehaviours)
+            {
+                Destroy(item);
+            }
+            foreach (var item in AggressiveBehaviours)
+            {
+                Destroy(item);
+            }
+        }
     }
 
     public void ChangeState(AIState newstate)
