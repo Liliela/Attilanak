@@ -526,8 +526,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114879866209960620}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114465745064883034
@@ -543,9 +543,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBehaviors:
   - {fileID: 114883861164335102}
-  moveVelocityMultiplier: 20
+  moveVelocityMultiplier: 30
   FollowTransform: {fileID: 0}
   StopDistance: 1.5
+  TargetingType: 0
 --- !u!114 &114560206092853820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -628,7 +629,7 @@ MonoBehaviour:
   maxwanderTimer: 4
   OriginTransform: {fileID: 0}
   mindistance: 0.3
-  moveVelocityMultiplier: 20
+  moveVelocityMultiplier: 30
 --- !u!114 &114730298918449722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -752,8 +753,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114792172860196494}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114823407254827026
@@ -767,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88486a1463c5cf042b986b26587ac098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
+  _moveSpeed: 7
   _healthMax: 50
   _healthActual: 50
   HpBar: {fileID: 114560206092853820}

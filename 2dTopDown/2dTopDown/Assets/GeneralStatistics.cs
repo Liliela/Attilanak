@@ -11,6 +11,7 @@ public class GeneralStatistics : Photon.MonoBehaviour
         get { return _moveSpeed; }
         set { _moveSpeed = value; }
     }
+
     [SerializeField]
     private float _moveSpeed;
 
@@ -45,6 +46,9 @@ public class GeneralStatistics : Photon.MonoBehaviour
                 HpBar.fillAmount = _healthActual / HealthMax;
         }
     }
+
+    private List<EnemySensor> _monsterSenses = new List<EnemySensor>();
+
     [SerializeField]
     private float _healthActual;
     public Image HpBar;
@@ -58,10 +62,31 @@ public class GeneralStatistics : Photon.MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
     }
 
+    public void AddMonsterSense(EnemySensor enemySensor)
+    {
+
+        if (!_monsterSenses.Contains(enemySensor))
+        {
+            _monsterSenses.Add(enemySensor);
+        }
+    }
+
+    public void RemoveMonsterSenser(EnemySensor enemySensor)
+    {
+        if (_monsterSenses.Contains(enemySensor))
+        {
+            _monsterSenses.Remove(enemySensor);
+        }
+    }
+
     public virtual void Death()
     {
         _anim.SetBool("Dead", true);
         Dead = true;
+        foreach (var sense in _monsterSenses)
+        {
+            sense.RemovePlayer(GetComponent<PhotonPlayerController>());
+        }
     }
 
     public virtual void Revive(float percent)
@@ -70,7 +95,6 @@ public class GeneralStatistics : Photon.MonoBehaviour
         Dead = false;
         ChangeHealth(HealthMax * percent);
     }
-
 
     [PunRPC]
     public void RPC_ChangeHealt(float change)
@@ -83,5 +107,16 @@ public class GeneralStatistics : Photon.MonoBehaviour
         Debug.Log(change);
         _anim.SetTrigger("Hurt");
         HealthActual += change;
+    }
+
+    public event EventHandler DeathEvent;
+
+    protected virtual void OnDeathEvent(EventArgs e)
+    {
+        EventHandler handler = DeathEvent;
+        if (handler != null)
+        {
+            handler(this, e);
+        }
     }
 }

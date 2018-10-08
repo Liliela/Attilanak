@@ -8,6 +8,8 @@ public class FollowTarget : AIBehaviour
     public Transform FollowTransform;
     public float StopDistance = 1f;
 
+    public TargetingType TargetingType;
+
     private Rigidbody2D _rigid;
     private GeneralStatistics _stat;
     private float _currentSpeed;
@@ -15,6 +17,8 @@ public class FollowTarget : AIBehaviour
     private EnemySensor _sensor;
     private BehaviourController _bh;
     private Animator _anim;
+
+
 
     public override void Awake()
     {
@@ -38,9 +42,74 @@ public class FollowTarget : AIBehaviour
             }
             else
             {
-                FollowTransform = _sensor.SensedPlayers[0].transform;
+                FollowTransform = GetTarget();
             }
         }
+    }
+
+    private Transform GetTarget()
+    {
+        Transform Target = null;
+        switch (TargetingType)
+        {
+            case TargetingType.FirstSee:
+                Target = _sensor.SensedPlayers[0].transform;
+                break;
+            case TargetingType.Closest:
+                float dist = float.PositiveInfinity;
+                foreach (var sensed in _sensor.SensedPlayers)
+                {
+                    float actDis = Vector2.Distance(sensed.transform.position, transform.position);
+                    if (actDis < dist)
+                    {
+                        dist = actDis;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            case TargetingType.LowestHp:
+                float hp = float.PositiveInfinity;
+
+                foreach (var sensed in _sensor.SensedPlayers)
+                {
+                    float actHp = sensed.GetComponent<GeneralStatistics>().HealthActual;
+                    if (actHp < hp)
+                    {
+                        hp = actHp;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            case TargetingType.HighestHp:
+                float hph = 0;
+
+                foreach (var sensed in _sensor.SensedPlayers)
+                {
+                    float actHp = sensed.GetComponent<GeneralStatistics>().HealthActual;
+                    if (actHp > hph)
+                    {
+                        hp = actHp;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            case TargetingType.Slowest:
+                float ms = float.PositiveInfinity;
+
+                foreach (var sensed in _sensor.SensedPlayers)
+                {
+                    float actms = sensed.GetComponent<GeneralStatistics>().HealthActual;
+                    if (actms < ms)
+                    {
+                        hp = actms;
+                        Target = sensed.transform;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        return Target;
     }
 
     private void FixedUpdate()
@@ -116,4 +185,14 @@ public class FollowTarget : AIBehaviour
         _currentSpeed = 0;
         _rigid.velocity = Vector2.zero;
     }
+}
+
+public enum TargetingType
+{
+    FirstSee,
+    Closest,
+    LowestHp,
+    HighestHp,
+    Slowest,
+    //AgroMeter,
 }

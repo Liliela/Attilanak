@@ -15,7 +15,7 @@ public class SenseArea : AIBehaviour
     }
 
     private void Update()
-    {
+    {       
         if (_sensor.SensedPlayers.Count > 0)
         {
             _bh.ChangeState(AIState.Sense);
@@ -25,11 +25,10 @@ public class SenseArea : AIBehaviour
     public override void EnterBehaviour()
     {
         base.EnterBehaviour();
-      
     }
 
     public override void ExitBehaviour()
     {
-        base.ExitBehaviour();       
+        base.ExitBehaviour();
     }
 }

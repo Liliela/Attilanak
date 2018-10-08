@@ -15,9 +15,10 @@ public class EnemySensor : MonoBehaviour
 
     public void AddPlayer(PhotonPlayerController player)
     {
-        if (!SensedPlayers.Contains(player))
+        if (!SensedPlayers.Contains(player) && !player.GetComponent<GeneralStatistics>().Dead)
         {
             SensedPlayers.Add(player);
+            player.GetComponent<GeneralStatistics>().AddMonsterSense(this);
         }
     }
 
@@ -25,8 +26,9 @@ public class EnemySensor : MonoBehaviour
     {
         if (SensedPlayers.Contains(player))
         {
-            SensedPlayers.Remove(player);          
-        }         
+            player.GetComponent<GeneralStatistics>().RemoveMonsterSenser(this);
+            SensedPlayers.Remove(player);
+        }
     }
 }
 
