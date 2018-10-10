@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler
 {
     public RuneDescriptor Rune;
     public Image Image;
@@ -14,13 +14,15 @@ public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     private RuneSlot _newRuneSlot;
     private RuneSlot _runeslot;
+    private MagicMaker _magicMaker;
 
-    public void Init(RuneDescriptor rune)
+    public void Init(RuneDescriptor rune, MagicMaker magicMaker)
     {
+        _magicMaker = magicMaker;
         _startParent = transform.parent;
         Rune = rune;
         Image.sprite = Rune.Image;
-    }   
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -59,7 +61,8 @@ public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-           Image.raycastTarget = true;
+        Image.raycastTarget = true;
+
         if (_newRuneSlot)
         {
             if (_runeslot)
@@ -86,8 +89,25 @@ public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         transform.SetParent(_startParent);
     }
 
+    public void PutInSlot(RuneSlot newSlot)
+    {
+        if (_runeslot)
+            _runeslot.RemoveFromSlot();
+        transform.SetParent(newSlot.transform);
+        newSlot.AddToSlot(this);
+        _runeslot = newSlot;
+    }
+
     private RuneSlot GetRuneSlot()
     {
         return _runeslot;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (_runeslot == null)
+            _magicMaker.PutInFirstAvalibleSlot(this);
+        else
+            RemoveFromSlot();
     }
 }

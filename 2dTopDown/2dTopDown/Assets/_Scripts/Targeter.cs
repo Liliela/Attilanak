@@ -43,10 +43,13 @@ public class Targeter : Photon.MonoBehaviour
 
     private void UpdateStat()
     {
+        if (CurrentFocusedCharacter)
+        {
             LockMarker.transform.position = CurrentFocusedCharacter.transform.position;
             NameText.text = CurrentFocusedCharacter.Name;
             HpBarImage.fillAmount = CurrentFocusedCharacter.HealthActual / CurrentFocusedCharacter.HealthMax;
-            HpText.text = string.Format("{0}/{1}", CurrentFocusedCharacter.HealthActual, CurrentFocusedCharacter.HealthMax);        
+            HpText.text = string.Format("{0}/{1}", CurrentFocusedCharacter.HealthActual, CurrentFocusedCharacter.HealthMax);
+        }         
     }
 
     private void UpdateLocked()

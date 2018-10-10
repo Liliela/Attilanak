@@ -40,7 +40,7 @@ public class MagicMaker : SkriptableReferenceHolder
         {
             SpellDescriptor spell = Instantiate(spellRef);
             _mySpells.Add(spell);
-        }       
+        }
         foreach (var rSlot in RuneSlots)
         {
             rSlot.Init(this);
@@ -116,8 +116,20 @@ public class MagicMaker : SkriptableReferenceHolder
                 GameObject go = Instantiate(RunePrefab, AvalibleRunesParent);
                 go.SetActive(true);
                 RuneElement re = go.GetComponent<RuneElement>();
-                re.Init(rune);
+                re.Init(rune, this);
                 _instancedRunes.Add(re);
+            }
+        }
+    }
+
+    public void PutInFirstAvalibleSlot(RuneElement runeElement)
+    {
+        foreach (var slot in RuneSlots)
+        {
+            if (slot.RuneElement == null && !slot.Locked)
+            {
+                runeElement.PutInSlot(slot);
+                return;
             }
         }
     }
