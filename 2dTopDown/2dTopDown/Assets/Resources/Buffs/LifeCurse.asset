@@ -14,7 +14,7 @@ MonoBehaviour:
   Name: LifeCurse
   Sprite: {fileID: 21300066, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
   BuffType: 1
-  BuffStackingType: 0
+  BuffStackingType: 1
   Duration: 10
   BuffChangeType: 1
   Change: 5
