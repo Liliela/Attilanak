@@ -9,10 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d5751a2c961df945a34295ccf5e576d, type: 3}
-  m_Name: Bush
+  m_Name: Rock
   m_EditorClassIdentifier: 
   m_Prefabs:
-  - {fileID: 1711235363384976, guid: 15a11331d00d61a42b44db753c89cd41, type: 2}
-  - {fileID: 1901814143341296, guid: f76d543566b782243868a7fa7c0c1cfe, type: 2}
+  - {fileID: 1669666774947616, guid: d509ea680243cb345a0f91258a198a6a, type: 2}
   m_PerlinScale: 0.5
   m_Z: 0
