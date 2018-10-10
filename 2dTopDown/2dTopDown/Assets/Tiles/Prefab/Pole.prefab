@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212483703830478514}
   - component: {fileID: 61796890836732950}
   m_Layer: 0
-  m_Name: Pole 1
+  m_Name: Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
