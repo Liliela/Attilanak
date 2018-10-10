@@ -525,26 +525,6 @@ Prefab:
       propertyPath: instantiationId
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 224481097788984702, guid: d7e05e335de928043b3460d7dfe65354,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114349994712774366, guid: d7e05e335de928043b3460d7dfe65354,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114349994712774366, guid: d7e05e335de928043b3460d7dfe65354,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114349994712774366, guid: d7e05e335de928043b3460d7dfe65354,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7e05e335de928043b3460d7dfe65354, type: 2}
   m_IsPrefabAsset: 0
@@ -643,25 +623,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1861654889 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1890827688609826, guid: d7e05e335de928043b3460d7dfe65354,
-    type: 2}
-  m_PrefabInternal: {fileID: 1487696114}
---- !u!114 &1861654890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1861654889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1998147019
 GameObject:
   m_ObjectHideFlags: 0
