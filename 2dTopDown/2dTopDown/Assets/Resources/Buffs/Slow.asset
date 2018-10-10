@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ba72e4c18f59e49bbd812ec9248d39, type: 3}
   m_Name: Slow
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Slow
   Sprite: {fileID: 21300054, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
   BuffType: 8
+  BuffStackingType: 0
   Duration: 10
   BuffChangeType: 0
   Change: -50

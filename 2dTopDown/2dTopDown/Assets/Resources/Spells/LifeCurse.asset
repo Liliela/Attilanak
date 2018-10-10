@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e51342068235c469ea43721f433e8c, type: 3}
   m_Name: LifeCurse
   m_EditorClassIdentifier: 
-  Name: Nullfier
+  Name: LifeCurse
   EffectName: 
   RuneTypes: 3200000046000000
   Image: {fileID: 21300010, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
