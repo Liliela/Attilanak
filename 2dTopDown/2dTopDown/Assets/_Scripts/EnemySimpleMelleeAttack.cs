@@ -28,7 +28,7 @@ public class EnemySimpleMelleeAttack : AIBehaviour
 
     private void Update()
     {
-        if (!_onCooldown && Vector2.Distance(transform.position, _followTarget.FollowTransform.position) < OptimalRange)
+        if (!_onCooldown && Active && Vector2.Distance(transform.position, _followTarget.FollowTransform.position) < OptimalRange)
         {
             Collider2D[] playerToHit = Physics2D.OverlapCircleAll(AttackPos.position, AttackRadius, HitLayer);
             if (playerToHit.Length > 0)
