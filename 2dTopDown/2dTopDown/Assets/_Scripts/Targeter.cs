@@ -26,7 +26,7 @@ public class Targeter : Photon.MonoBehaviour
 
     private void Update()
     {
-        if (PhotonNetwork.isMasterClient)
+        if (photonView.isMine)
         {
             FindTarget();
             if (!CurrentFocusedCharacter)
