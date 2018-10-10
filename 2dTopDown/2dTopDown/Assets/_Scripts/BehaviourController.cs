@@ -11,6 +11,7 @@ public class BehaviourController : MonoBehaviour
 
     public List<AIBehaviour> SenseBehaviours;
     private List<AIBehaviour> _usedSenseBehaviours = new List<AIBehaviour>();
+
     public bool ShuffleSense;
 
     public List<AIBehaviour> AggressiveBehaviours;
@@ -39,9 +40,9 @@ public class BehaviourController : MonoBehaviour
     }
 
     public void ChangeState(AIState newstate)
-    {
+    { 
         if (AIState == newstate) return;
-
+        Debug.Log(newstate);
         if (_currentBehaviour)
         {
             _currentBehaviour.ExitBehaviour();
@@ -59,6 +60,8 @@ public class BehaviourController : MonoBehaviour
                 break;
             case AIState.Agessive:
                 _currentBehaviour = GetNextBehaviour(AggressiveBehaviours, _usedAggressiveBehaviours);
+                break;
+            case AIState.Dead:
                 break;
             default:
                 break;
@@ -100,7 +103,13 @@ public class BehaviourController : MonoBehaviour
             baseList.Add(item);
         }
         usedList.Clear();
-      //  baseList.Shuffle(_rnd);
+        //  baseList.Shuffle(_rnd);
+    }
+
+
+    public void Death()
+    {
+        ChangeState(AIState.Dead);
     }
 }
 
@@ -110,4 +119,5 @@ public enum AIState
     Calm = 10,
     Sense = 20,
     Agessive = 30,
+    Dead = 40,
 }

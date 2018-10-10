@@ -43,4 +43,7 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - RPC_ChangeHealt
+  - RPC_Revice
+  - RPC_ChangeHealth
+  - RPC_ApplyTargetSpell
   DisableAutoOpenWizard: 1

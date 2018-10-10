@@ -24,7 +24,6 @@ public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
         transform.SetParent(_startParent.parent.parent);
         Image.raycastTarget = false;
     }
@@ -60,8 +59,7 @@ public class RuneElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
-        Image.raycastTarget = true;
+           Image.raycastTarget = true;
         if (_newRuneSlot)
         {
             if (_runeslot)

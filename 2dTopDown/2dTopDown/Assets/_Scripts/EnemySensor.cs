@@ -7,7 +7,7 @@ public class EnemySensor : MonoBehaviour
 {
     public List<PhotonPlayerController> SensedPlayers;
     private BehaviourController _bh;
-
+    
     private void Awake()
     {
         _bh = GetComponentInParent<BehaviourController>();

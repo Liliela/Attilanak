@@ -49,7 +49,6 @@ public class Spawner : Photon.MonoBehaviour
 
             Transform loc = _spawnLocations[UnityEngine.Random.Range(0, _spawnLocations.Count - 1)];
 
-
             GameObject go = PhotonNetwork.Instantiate("Monsters/" + Prefab.name, loc.position, loc.rotation, 0, data);
 
             EnemyController entitiy = go.GetComponent<EnemyController>();
@@ -65,12 +64,11 @@ public class Spawner : Photon.MonoBehaviour
             }
         }
 
-
         Invoke("Spawn", spawnTime);
     }
 
-    internal void RemoveEntity(EnemyController entity)
+    public void RemoveEnemy(EnemyController enemy)
     {
-        Enemys.Remove(entity.GetComponent<EnemyController>());
+        Enemys.Remove(enemy.GetComponent<EnemyController>());
     }
 }

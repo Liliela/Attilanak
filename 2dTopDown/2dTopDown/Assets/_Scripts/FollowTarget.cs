@@ -17,6 +17,7 @@ public class FollowTarget : AIBehaviour
     private EnemySensor _sensor;
     private BehaviourController _bh;
     private Animator _anim;
+    private bool _onMove;
 
     public override void Awake()
     {
@@ -30,9 +31,9 @@ public class FollowTarget : AIBehaviour
 
     private void Update()
     {
-        if (PhotonNetwork.isMasterClient && FollowTransform)
+        if (PhotonNetwork.isMasterClient && FollowTransform && Active)
         {
-            _direction = (FollowTransform.position - transform.position).normalized;
+            CheckDistace();
 
             if (_sensor.SensedPlayers.Count == 0)
             {
@@ -45,11 +46,26 @@ public class FollowTarget : AIBehaviour
         }
     }
 
-   
+    private void CheckDistace()
+    {
+        if (Vector2.Distance(FollowTransform.position, transform.position) > StopDistance)
+        {
+            _onMove = true;
+            _currentSpeed = _direction.magnitude * _stat.MoveSpeed;
+            _direction = (FollowTransform.position - transform.position).normalized;
+        }
+        else
+        {
+            _onMove = false;
+            _currentSpeed = 0;
+            _direction = Vector2.zero;   
+        }
+    }
+
 
     private void FixedUpdate()
     {
-        if (PhotonNetwork.isMasterClient && FollowTransform)
+        if (PhotonNetwork.isMasterClient && FollowTransform && Active)
         {
             UpdateMove();
             UpdateAnim();
@@ -96,11 +112,8 @@ public class FollowTarget : AIBehaviour
 
     private void UpdateMove()
     {
-        if (Vector2.Distance(FollowTransform.position, transform.position) > StopDistance)
-        {
-            _currentSpeed = _direction.magnitude * _stat.MoveSpeed;
+        if (_onMove)
             _rigid.velocity = (_direction * _stat.MoveSpeed * Time.deltaTime * moveVelocityMultiplier);
-        }
     }
 
     public override void EnterBehaviour()

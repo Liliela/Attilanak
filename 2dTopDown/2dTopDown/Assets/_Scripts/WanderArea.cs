@@ -47,9 +47,23 @@ public class WanderArea : AIBehaviour
 
     void Update()
     {
-        if (PhotonNetwork.isMasterClient)
+        if (PhotonNetwork.isMasterClient && Active)
         {
-            _direction = (targetPos - (Vector2)transform.position).normalized;
+            _direction = Vector2.zero;
+            _currentSpeed = 0;
+            if (_onMove)
+            {
+                _direction = (targetPos - (Vector2)transform.position).normalized;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (PhotonNetwork.isMasterClient && Active)
+        {
+            UpdateMove();
+            UpdateAnim();
         }
     }
 
@@ -68,15 +82,6 @@ public class WanderArea : AIBehaviour
         Invoke("GetNewTarget", UnityEngine.Random.Range(minwanderTimer, maxwanderTimer));
     }
 
-    private void FixedUpdate()
-    {
-        if (PhotonNetwork.isMasterClient)
-        {
-            UpdateMove();
-            UpdateAnim();
-        }
-    }
-
     private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
     {
         Vector2 diference = vec2 - vec1;
@@ -89,29 +94,31 @@ public class WanderArea : AIBehaviour
         float _enemyAngle = 0;
 
         _enemyAngle = AngleBetweenVector2(transform.position, targetPos);
+        if (_anim && _anim.gameObject.activeInHierarchy)
+        {
+            _anim.SetFloat("MoveSpeed", _currentSpeed);
+            //_anim.SetFloat("MoveSpeed", 10);
 
-        _anim.SetFloat("MoveSpeed", _currentSpeed);
-        //_anim.SetFloat("MoveSpeed", 10);
-
-        if (_enemyAngle < 45 && _enemyAngle > -45)
-        {
-            _anim.SetFloat("inputX", 1);
-            _anim.SetFloat("inputY", 0);
-        }
-        else if (_enemyAngle > 45 && _enemyAngle < 135)
-        {
-            _anim.SetFloat("inputX", 0);
-            _anim.SetFloat("inputY", 1);
-        }
-        else if (_enemyAngle > 135 || _enemyAngle < -135)
-        {
-            _anim.SetFloat("inputX", -1);
-            _anim.SetFloat("inputY", 0);
-        }
-        else if (_enemyAngle > -135 && _enemyAngle < -45)
-        {
-            _anim.SetFloat("inputX", 0);
-            _anim.SetFloat("inputY", -1);
+            if (_enemyAngle < 45 && _enemyAngle > -45)
+            {
+                _anim.SetFloat("inputX", 1);
+                _anim.SetFloat("inputY", 0);
+            }
+            else if (_enemyAngle > 45 && _enemyAngle < 135)
+            {
+                _anim.SetFloat("inputX", 0);
+                _anim.SetFloat("inputY", 1);
+            }
+            else if (_enemyAngle > 135 || _enemyAngle < -135)
+            {
+                _anim.SetFloat("inputX", -1);
+                _anim.SetFloat("inputY", 0);
+            }
+            else if (_enemyAngle > -135 && _enemyAngle < -45)
+            {
+                _anim.SetFloat("inputX", 0);
+                _anim.SetFloat("inputY", -1);
+            }
         }
     }
 

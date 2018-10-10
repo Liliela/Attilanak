@@ -7,28 +7,30 @@ public class SensorZone : MonoBehaviour
 {
     private EnemySensor _enemy;
     public SensorZoneType SensorZoneType;
+    private GeneralStatistics _stats;
 
     private void Awake()
     {
         _enemy = GetComponentInParent<EnemySensor>();
+        _stats = GetComponentInParent<GeneralStatistics>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!PhotonNetwork.isMasterClient) return;
+        if (!PhotonNetwork.isMasterClient || _stats.Dead) return;
 
         switch (SensorZoneType)
         {
             case SensorZoneType.CloseAgro:
                 if (collision.tag == "Player")
                 {
-                    _enemy.AddPlayer(collision.gameObject.GetComponentInParent<PhotonPlayerController>());                 
+                    _enemy.AddPlayer(collision.gameObject.GetComponentInParent<PhotonPlayerController>());
                 }
                 break;
             case SensorZoneType.Sense:
                 if (collision.tag == "Player")
                 {
-                    _enemy.AddPlayer(collision.gameObject.GetComponentInParent<PhotonPlayerController>());       
+                    _enemy.AddPlayer(collision.gameObject.GetComponentInParent<PhotonPlayerController>());
                 }
                 break;
             case SensorZoneType.Escape:
@@ -40,7 +42,7 @@ public class SensorZone : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!PhotonNetwork.isMasterClient) return;
+        if (!PhotonNetwork.isMasterClient || _stats.Dead) return;
 
         switch (SensorZoneType)
         {

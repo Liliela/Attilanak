@@ -4,6 +4,7 @@ using UnityEngine;
 public class AIBehaviour : MonoBehaviour
 {
     public List<AIBehaviour> ConnectedBehaviors;
+    public bool Active;
 
     public virtual void Awake()
     {
@@ -12,6 +13,7 @@ public class AIBehaviour : MonoBehaviour
 
     public virtual void EnterBehaviour()
     {
+        Active = true;
         enabled = true;
         foreach (var beh in ConnectedBehaviors)
         {
@@ -21,6 +23,7 @@ public class AIBehaviour : MonoBehaviour
 
     public virtual void ExitBehaviour()
     {
+        Active = false;
         enabled = false;
         foreach (var beh in ConnectedBehaviors)
         {

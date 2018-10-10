@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MagicMaker : MonoBehaviour
-{
-    public List<RuneDescriptor> RunesReferences;
-    public List<SpellDescriptor> AvalibleSpells;
-
+public class MagicMaker : SkriptableReferenceHolder
+{ 
     public GameObject RunePrefab;
     public Transform AvalibleRunesParent;
     public List<RuneSlot> RuneSlots;
@@ -21,8 +18,9 @@ public class MagicMaker : MonoBehaviour
 
     public ScrollReserchSlot ScrollReserchSlot;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         Init();
         UpdateAvalibleRunes();
     }

@@ -8,7 +8,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour
     public List<GameObject> NotMineObjects;
 
     private void Awake()
-    {
+    {if (PhotonNetworkManager.Instance)
         PhotonNetworkManager.Instance.AddPlayer(this);
         if (!photonView.isMine)
         {

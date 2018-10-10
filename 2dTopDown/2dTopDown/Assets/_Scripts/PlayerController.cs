@@ -27,10 +27,18 @@ public class PlayerController : Photon.MonoBehaviour
 
     private void Update()
     {
-        if (photonView.isMine && !_ps.Dead)
+        if (photonView.isMine)
         {
-            UpdateControll();
-            UpdateMouse();
+            if (!_ps.Dead)
+            {
+                UpdateControll();
+                UpdateMouse();
+            }
+            else
+            {
+                _direction = Vector2.zero;
+                _currentSpeed = 0;
+            }
         }
     }
 
@@ -114,7 +122,6 @@ public class PlayerController : Photon.MonoBehaviour
     {
         _currentSpeed = _direction.magnitude * _ps.MoveSpeed;
         _rigid.velocity = (_direction * _ps.MoveSpeed * Time.deltaTime * moveVelocityMultiplier);
-        //  transform.Translate(_direction * _ps.MoveSpeed * Time.deltaTime);
     }
 
     private void UpdateControll()
