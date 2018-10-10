@@ -54,7 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4125735435828340}
   - component: {fileID: 212287955298051932}
-  - component: {fileID: 95068899662712502}
   m_Layer: 11
   m_Name: MinimapIcon
   m_TagString: Untagged
@@ -511,24 +510,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.63885784}
   serializedVersion: 2
   m_Radius: 0.35560834
---- !u!95 &95068899662712502
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1295663169096104}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ecce9a9e8b53228409d3ee1391203a9b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95502208206323996
 Animator:
   serializedVersion: 3
@@ -641,8 +622,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114553732758675408}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 7
+  instantiationId: 7
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114086856038733426
@@ -911,8 +892,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114145952193949366}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 6
+  instantiationId: 6
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114376279320506942
@@ -1121,7 +1102,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1841932457
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 08dae81075e558c40ad84bed99a37370, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1167,7 +1148,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1841932457
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 08dae81075e558c40ad84bed99a37370, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1213,7 +1194,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1617900921
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 509a382e815339c42bf3dc1d7bc9a181, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.73333335}
@@ -1259,7 +1240,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1617900921
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300056, guid: addf9bec1ba704043b3058fb71dd2435, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -264,7 +264,8 @@ Prefab:
       propertyPath: instantiationId
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95307538133372904, guid: 047d549e5ca503b46807b4f529db53c1, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 047d549e5ca503b46807b4f529db53c1, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &557610413 stripped
@@ -448,7 +449,8 @@ Prefab:
       propertyPath: instantiationId
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95068899662712502, guid: eb7c91ec9ad8d8c47bf621762a339d01, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: eb7c91ec9ad8d8c47bf621762a339d01, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1227016302 stripped
@@ -530,7 +532,18 @@ Prefab:
       propertyPath: m_Color.a
       value: 0.8666667
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 224481097788984702, guid: d7e05e335de928043b3460d7dfe65354,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20796842665665488, guid: d7e05e335de928043b3460d7dfe65354,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 5943
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 95524625439204392, guid: d7e05e335de928043b3460d7dfe65354, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: d7e05e335de928043b3460d7dfe65354, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1605329870 stripped
