@@ -62,6 +62,7 @@ public class BehaviourController : MonoBehaviour
                 _currentBehaviour = GetNextBehaviour(AggressiveBehaviours, _usedAggressiveBehaviours);
                 break;
             case AIState.Dead:
+                _currentBehaviour = null;
                 break;
             default:
                 break;
