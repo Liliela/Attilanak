@@ -26,16 +26,19 @@ public class Targeter : Photon.MonoBehaviour
 
     private void Update()
     {
-        FindTarget();
-        if (!CurrentFocusedCharacter)
+        if (PhotonNetwork.isMasterClient)
         {
-            LoseFocus();
-        }
-        else
-        {
-            UpdateLocked();
-            UpdateStat();
-        }   
+            FindTarget();
+            if (!CurrentFocusedCharacter)
+            {
+                LoseFocus();
+            }
+            else
+            {
+                UpdateLocked();
+                UpdateStat();
+            }
+        }       
     }
 
     private void UpdateStat()

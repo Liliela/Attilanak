@@ -20,7 +20,7 @@ MonoBehaviour:
   EnergyType: 40
   Cooldown: 3
   Damage: 0
-  Range: 0
+  Range: 10
   Radius: 0
   ApplyBuff:
   - {fileID: 11400000, guid: 227096cbc25eee6409626611c1d47c8c, type: 2}
