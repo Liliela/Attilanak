@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   m_Prefabs:
-  - {fileID: 1669666774947616, guid: d509ea680243cb345a0f91258a198a6a, type: 2}
+  - {fileID: 1117882784144120, guid: d509ea680243cb345a0f91258a198a6a, type: 2}
   m_PerlinScale: 0.5
   m_Z: 0
