@@ -124,14 +124,14 @@ public class GeneralStatistics : Photon.MonoBehaviour
 
     public virtual void ChangeHealthPercent(float change, EnergyType energyType)
     {
-        Debug.Log(transform.name + " Take " + change + " hpchange from " + energyType);
+        //Debug.Log(transform.name + " Take " + change + " hpchange from " + energyType);
         float damage = CalculateResistence(change, energyType) / 100 * HealthMax;
         if (damage < 0)
         {
             _anim.SetTrigger("Hurt");
         }
 
-        Debug.Log(transform.name + " Get " + damage + " hp");
+        //Debug.Log(transform.name + " Get " + damage + " hp");
         HealthActual += damage;
     }
 

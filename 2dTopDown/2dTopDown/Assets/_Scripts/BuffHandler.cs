@@ -38,6 +38,10 @@ public class BuffHandler : MonoBehaviour
                     buff.BuffElement.Refresh(buff.Duration, buff.FullDuration);
             }
         }
+        foreach (var item in removeBuffs)
+        {
+            CurrentBuffs.Remove(item);
+        }
     }
 
     private void ApplyBuffEffect(BuffInstance buff)
