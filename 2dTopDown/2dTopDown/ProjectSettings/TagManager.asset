@@ -44,8 +44,11 @@ TagManager:
   - name: Level0
     uniqueID: 1758992583
     locked: 0
-  - name: Map
+  - name: BaseLevel
     uniqueID: 3790492103
+    locked: 0
+  - name: MapCollider
+    uniqueID: 3043692695
     locked: 0
   - name: Player
     uniqueID: 1841932457
