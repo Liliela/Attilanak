@@ -9,18 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44e51342068235c469ea43721f433e8c, type: 3}
-  m_Name: Slow
+  m_Name: Regeneration
   m_EditorClassIdentifier: 
-  Name: Slow
-  EffectName: 
-  RuneTypes: 46000000
-  Image: {fileID: 21300014, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
+  Name: Regeneration
+  EffectName: FellEffect
+  RuneTypes: 2800000046000000
+  Image: {fileID: 21300012, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
   Learned: 0
   SpellType: 0
-  EnergyType: 0
-  Cooldown: 3
+  EnergyType: 50
+  Cooldown: 5
   Damage: 0
-  Range: 0
+  Range: 10
   Radius: 0
   ApplyBuff:
-  - {fileID: 11400000, guid: 803594c6626332c42b2dd87d5e1150d9, type: 2}
+  - {fileID: 11400000, guid: ad147024f9d005d4db2f03a63d47d58f, type: 2}

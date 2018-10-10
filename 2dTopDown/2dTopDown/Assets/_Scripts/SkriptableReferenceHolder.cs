@@ -5,21 +5,27 @@ using UnityEngine;
 
 public class SkriptableReferenceHolder : MonoBehaviour
 {
-    public List<RuneDescriptor> RunesReferences;
-    public List<SpellDescriptor> AvalibleSpells;
+    public List<RuneDescriptor> Runes;
+    public List<SpellDescriptor> Spells;
+    public List<BuffDescriptor> Buffs;
 
     public virtual void Awake()
     {
         Object[] runes = Resources.LoadAll("Runes", typeof(RuneDescriptor));
         Object[] spells = Resources.LoadAll("Spells", typeof(SpellDescriptor));
+        Object[] buffs = Resources.LoadAll("Buffs", typeof(BuffDescriptor));
 
         foreach (var item in runes)
         {
-            RunesReferences.Add((RuneDescriptor)item);
+            Runes.Add((RuneDescriptor)item);
         }
         foreach (var item in spells)
         {
-            AvalibleSpells.Add((SpellDescriptor)item);
+            Spells.Add((SpellDescriptor)item);
+        }
+        foreach (var item in buffs)
+        {
+            Buffs.Add((BuffDescriptor)item);
         }
     }
 }

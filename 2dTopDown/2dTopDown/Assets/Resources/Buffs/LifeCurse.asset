@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ba72e4c18f59e49bbd812ec9248d39, type: 3}
+  m_Name: LifeCurse
+  m_EditorClassIdentifier: 
+  Name: LifeCurse
+  Sprite: {fileID: 21300066, guid: e984ed6c0cb028c45962868ac9189bf7, type: 3}
+  BuffType: 1
+  BuffStackingType: 0
+  Duration: 10
+  BuffChangeType: 1
+  Change: 5

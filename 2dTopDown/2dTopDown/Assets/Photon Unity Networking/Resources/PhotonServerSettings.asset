@@ -46,4 +46,5 @@ MonoBehaviour:
   - RPC_Revice
   - RPC_ChangeHealth
   - RPC_ApplyTargetSpell
+  - RPC_ChangeHealthPercent
   DisableAutoOpenWizard: 1

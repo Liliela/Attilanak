@@ -5,12 +5,13 @@ using System.Linq;
 using UnityEngine;
 
 public class MagicMaker : SkriptableReferenceHolder
-{ 
+{
     public GameObject RunePrefab;
     public Transform AvalibleRunesParent;
     public List<RuneSlot> RuneSlots;
     private List<RuneDescriptor> _myRunes = new List<RuneDescriptor>();
     private List<SpellDescriptor> _mySpells = new List<SpellDescriptor>();
+
     private List<RuneElement> _instancedRunes = new List<RuneElement>();
 
     public GameObject ScrollPrefab;
@@ -30,16 +31,16 @@ public class MagicMaker : SkriptableReferenceHolder
         ScrollPrefab.SetActive(false);
         RunePrefab.SetActive(false);
         ScrollReserchSlot.Init(this);
-        foreach (var runeRef in RunesReferences)
+        foreach (var runeRef in Runes)
         {
             RuneDescriptor rune = Instantiate(runeRef);
             _myRunes.Add(rune);
         }
-        foreach (var spellRef in AvalibleSpells)
+        foreach (var spellRef in Spells)
         {
             SpellDescriptor spell = Instantiate(spellRef);
             _mySpells.Add(spell);
-        }
+        }       
         foreach (var rSlot in RuneSlots)
         {
             rSlot.Init(this);

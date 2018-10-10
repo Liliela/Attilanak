@@ -19,7 +19,7 @@ public class SpellDescriptor : ScriptableObject
     public float Range;
     public float Radius;
 
-    public List<BuffBase> ApplyBuff;
+    public List<BuffDescriptor> ApplyBuff;
 }
 
 public enum SpellType

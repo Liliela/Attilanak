@@ -115,6 +115,26 @@ public class GeneralStatistics : Photon.MonoBehaviour
         ChangeHealth(change, type);
     }
 
+    [PunRPC]
+    public void RPC_ChangeHealthPercent(float change, string typeInString)
+    {
+        EnergyType type = (EnergyType)Enum.Parse(typeof(EnergyType), typeInString, true);
+        ChangeHealthPercent(change, type);
+    }
+
+    public virtual void ChangeHealthPercent(float change, EnergyType energyType)
+    {
+        Debug.Log(transform.name + " Take " + change + " hpchange from " + energyType);
+        float damage = CalculateResistence(change, energyType) / 100 * HealthMax;
+        if (damage < 0)
+        {
+            _anim.SetTrigger("Hurt");
+        }
+
+        Debug.Log(transform.name + " Get " + damage + " hp");
+        HealthActual += damage;
+    }
+
     public virtual void ChangeHealth(float change, EnergyType energyType)
     {
         Debug.Log(transform.name + " Take " + change + " hpchange from " + energyType);
